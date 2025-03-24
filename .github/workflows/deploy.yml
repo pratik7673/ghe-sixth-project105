@@ -11,16 +11,18 @@ jobs:
   test:
     environment: testing
     runs-on: ubuntu-latest
-    container: node:22
+    #container: node:22  #if you don't use container still you can use servcies but lit change
     env:
       MONGODB_CONNECTION_PROTOCOL: mongodb
-      MONGODB_CLUSTER_ADDRESS: mongodb
+      MONGODB_CLUSTER_ADDRESS: 127.0.0.1:27017 #mongodb
       MONGODB_USERNAME: root
       MONGODB_PASSWORD: example
       PORT: 8080
     services:
       mongodb:
         image: mongo
+        ports: 
+          - 27017:27017   #if you are using runner not container
         env:
           MONGO_INITDB_ROOT_USERNAME: root
           MONGO_INITDB_ROOT_PASSWORD: example
