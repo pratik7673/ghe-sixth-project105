@@ -31,7 +31,9 @@ jobs:
       #- name: Run server
       #  run: npm start & npx wait-on http://127.0.0.1:$PORT # requires MongoDB Atlas to accept requests from anywhere!
       - name: Run tests
-        run: npm test
+        run: |
+         node -v
+         npm -v
       #- name: Output information
       #  run: |
       #    echo "MONGODB_USERNAME: $MONGODB_USERNAME"
@@ -39,6 +41,9 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     container: node:22
+    #container:
+    #  image: node:22
+    #  env: 
     steps:
       - name: Output
         run: |
